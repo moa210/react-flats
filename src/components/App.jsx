@@ -1,51 +1,60 @@
-// import React, {Component} from 'react';
-import logo from '../assets/logo.svg';
+import {Component} from "react";
 import flats from '../data/flats';
 import Flat from './flat';
-// import  Map from './map';
-// import FlatList from './flat-list';
+import  SimpleMap from './map';
 import '../assets/App.scss';
-import {Component} from "react";
 
 class App  extends Component {
+    
   constructor(props) {
-    super(props);
-    this.state = {
-      flats: [],
-      SelectedFlatName: "Superbe vue à 2 min du Sacré Coeur",
-      SelectedImageUrl: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg"
-    }
-    this.SelectFlat = () => this.SelectFlat.bind(this);
+      super(props);
+      this.state = {
+          selectedFlat: {
+              name: flats[0].name,
+              id: flats[0].name,
+              imageUrl: flats[0].imageUrl,
+              price: flats[0].price,
+              currency: flats[0].currency,
+              lat: flats[0].lat,
+              long: flats[0].long,
+              active: false
+          }}
+  }
+  
+    PopulateFlats = () =>{
+      let flatsCollection = [];
+      for (let i = 0; i < flats.length; i ++) {
+          this.state = {
+              name: flats[i].name,
+              id: flats[i].name,
+              imageUrl: flats[i].imageUrl,
+              price: flats[i].price,
+              currency: flats[i].priceCurrency,
+              lat: flats[i].lat,
+              long: flats[i].long,
+              active: false
+          }
+          flatsCollection.push(<Flat  active = {this.state.active} name={this.state.name} imageUrl={this.state.imageUrl} price={this.state.price} currency={this.state.currency}/>)
+      }
+      return flatsCollection;
   }
 
-  // selectFlat(name) {
-  //   this.setState({
-  //     selectedFlat: name
-  //   });
-  // }
   render(){
     return (
-        console.log("APP.jsx working"),
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <p>
-              <Flat name = {this.state.SelectedFlatName}/>
-              <Flat imageUrl = {this.state.SelectedImageUrl}/>
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
+        <div >
+            <div className="left-scene">
+              <div className="flat-list">
+                  {this.PopulateFlats()}
+              </div>
+            </div>
+            <div className="right-scene">
+                {/*<p>HELLO RIGHT</p>*/}
+              <div className="map-container">
+                <SimpleMap/>
+              </div>
+            </div>
         </div>
+        
     );
   }
 }

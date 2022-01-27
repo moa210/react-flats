@@ -1,51 +1,86 @@
 .card {
-  height: 230px;
+  height: 200px;
+  min-width: 250px;;
+  background-color: grey;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  margin: 5px;
+  border: 1px solid whitesmoke;
+  border-radius: 6px;
+  overflow-y: clip;
+
   &.active {
-    border: 10px solid red;
+    border: 2px solid red;
+  }
+  a:link, a:visited, a:hover a:active{
+    color: white;
+    text-decoration: none;
+  }
+
+  img {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    //max-height: 100%;
+    //min-height: 100%;
+    opacity: 0.7;
+    transition: 0.3s;
+    border-radius: 6px;
+  }
+  img:hover{
+    opacity: 1;
+    transition: 0.6s;
+
   }
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
-}
+
+//.card-user {
+//  position: absolute ;
+//  right: 10px;
+//  top: 10px;
+//  width: 40px;
+//  border-radius: 50%;
+//}
 .card-category {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 15px;
+  font-size: 1em;
+  text-shadow: red;
   text-transform: uppercase;
 }
 .card-description {
-  position: absolute;
+  //text-overflow: ellipsis;
+  position: absolute ;
+  //display: block;
   bottom: 10px;
   left: 10px;
+  //margin-right: 100px;
+  //overflow: hidden;
+ 
 }
 .card-description h2 {
-  font-size: 20px;
+  //padding-right: 100px;
+  font-size: 1em;
 }
 .card-description p {
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0.7;
   font-weight: lighter;
 }
-.card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
-}
+//.card-link {
+//  position: absolute;
+//  top: 0;
+//  bottom: 0;
+//  right: 0;
+//  width: 100%;
+//  z-index: 2;
+//  background: black;
+//  opacity: 0;
+//}
 .card-link:hover {
   opacity: 0.1;
 }
